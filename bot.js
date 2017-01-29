@@ -13,6 +13,9 @@ const game1 = '274976378867154965';
 const staff = '274986888832614401';
 
 client.on('message', message => {
+	
+	const params = message.content.split(" ").slice(1);
+
 	if(message.content === '!create') {
 		if(message.member.roles.has(staff)) {
 			message.delete();

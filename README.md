@@ -1,11 +1,11 @@
 #Kingpin
 
-##Version 1.1 - does some things
+##Version 0.1 - does some things
 
 ###Commands
 
-* !create - STAFF ONLY - Creates Game 1
-* !join - Joins Game 1
+* **!create** - Creates Game 1 (*Staff Only*)
+* **!join** - Joins Game 1
 
 ###Notes/Tips
 

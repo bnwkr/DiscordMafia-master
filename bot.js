@@ -135,7 +135,7 @@ client.on('message', message => {
 					url: "http://discord.io/mafia",
 					color: 16711680,
 					fields: [
-						{ name: '\u200b', value: '\u200b', true },
+						{ name: '\u200b', value: '\u200b', inline: true },
 						{ name: "User Kicked", value: kickMember.toString(), inline: true },
 						{ name: "Reason", value: reason, inline: true },
 						{ name: "Kicked By", value: `${message.author.username}#${message.author.discriminator}`, inline: false }

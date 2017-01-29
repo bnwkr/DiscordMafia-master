@@ -125,16 +125,17 @@ client.on('message', message => {
 
 		let kickMember = message.guild.member(message.mentions.users.first());
 		if(!kickMember) return message.reply("please mention a valid user.");
+		let reason = message.content.split(" ").slice(2);
 
 		kickMember.kick().then(member => {
-			message.channel.sendMessage(`:ok_hand: kicked \`${member.user.username}#${member.user.discriminator}\` for \`${params[1]}\``);
+			message.channel.sendMessage(`:ok_hand: kicked \`${member.user.username}#${member.user.discriminator}\` for \`${reason}\``);
 			message.guild.channels.get(modLogs).sendMessage("", {
 				embed: {
 					title: "User kicked",
 					color: 16711680,
 					fields: [
 						{ name: "User", value: 'test member' },
-						{ name: "Reason", value: 'test reason' },
+						{ name: "Reason", value: reason },
 						{ name: "Responsible Mod", value: `${message.author.username}#${message.author.discriminator}` }
 					],
 					timestamp: new Date()

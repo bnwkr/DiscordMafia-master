@@ -13,6 +13,7 @@ client.on('message', message => {
 	}
 
 	if(message.content === '!join') {
+		if(message.member.roles.has('275059795189563393')) return;
 		message.member.addRole('275059795189563393');
 		message.channel.sendMessage(message.author.username + " has joined `Game1!`");
   	}

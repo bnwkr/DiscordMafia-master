@@ -1,6 +1,13 @@
 #Kingpin
 
-##Version 1 - Does nothing tbh
+##Version 1.1 - does some things
+
+###Commands
+
+* !create - STAFF ONLY - Creates Game 1
+* !join - Joins Game 1
+
+###Notes/Tips
 
 NOTE: When downloading, replace 'token'.
 

@@ -102,7 +102,7 @@ client.on('message', message => {
 
 			message.channel.fetchMessages({limit: 100})
 			.then(messages => {
-				var message_array = messages.array();
+				var msg_array = messages.array();
 				if (user !== undefined) {
 					msg_array = msg_array.filter(m => m.author.id === user.id);
 					message.delete();
@@ -127,7 +127,6 @@ client.on('message', message => {
 		if(!kickMember) return message.reply("please mention a valid user.");
 
 		kickMember.kick().then(member => {
-<<<<<<< HEAD
 			message.channel.sendMessage(`:ok_hand: kicked \`${member.user.username}#${member.user.discriminator}\` for \`${params[1]}\``);
 			message.guild.channels.get(modLogs).sendMessage("", {
 				embed: {
@@ -140,25 +139,6 @@ client.on('message', message => {
 					],
 					timestamp: new Date()
 				}
-=======
-			message.channel.sendMessage(`:ok_hand: kicked \`${member.user.username}#${member.user.discriminator}\`. Reason for kick?`);
-			const collector = message.channel.createCollector(
-				m => m.author.id !== client.user.id, { maxMatches: 1, time: 6000 }
-			);
-			collector.on('message', m => {
-				m.guild.channels.find('name', 'mod-log').sendMessage("", {
-					embed: {
-						title: "User kicked",
-						color: 0xFA8072,
-						fields: [
-							{ name: "User", value: kickMember },
-							{ name: "Reason", value: params[1] },
-							{ name: "Responsible Mod", value: `${message.author.username}#${message.author.discriminator}` }
-						],
-						timestamp: new Date()
-					}
-				});
->>>>>>> master
 			});
 		});
 	}

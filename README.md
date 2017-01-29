@@ -1,11 +1,13 @@
 #Kingpin
 
-##Version 0.1 - does some things
+##Version 0.3 - quite a few things
 
 ###Commands
 
 * **!create** - Creates Game 1 (*Staff Only*)
-* **!join** - Joins Game 1
+* **!join** - Joins Game 1 Lobby
+* **!start** - Starts Game 1 (*Staff Only*)
+* **!win <mafia/town> <gamenumber>** - Finishes the Game (*Staff Only*)
 
 ###Notes/Tips
 

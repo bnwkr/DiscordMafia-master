@@ -1,0 +1,27 @@
+{
+	"games": [
+		{
+			"game": "1",
+			"players": ["BlueDeadpool", "Tiemen", "Zach", "Bob", "Jon"], // probably use user IDs everywhere
+			"mafia": ["Tiemen"],
+			"dead": ["Zach"],
+			"ontrial": ["Tiemen"],
+			"staff": ["BlueDeadpool", "Tiemen", "Zach"],
+			"channels": [
+				{
+					"name": "game1",
+					"id": "123456789101112131415"
+				},
+				{
+					"name": "game1-lobby",
+					"id": "123456789101112131415"
+				},
+				{
+					"name": "game1-mafia",
+					"id": "123456789101112131415"
+				}
+			],
+			"status": "day2" // day1, night1, day2, night2, pregame, win-mafia, win-town, ended
+		}
+	]
+}

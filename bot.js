@@ -105,7 +105,7 @@ client.on('message', message => {
 			killMember.addRole(274986487232069634).then(member => {
 					member.removeRole(game1);
 					message.channel.sendMessage("\`${member.user.username}\` ***has been killed in the night!***");
-		 }
+		 )};
 
 
 	if(message.content.startsWith("!prune")) {

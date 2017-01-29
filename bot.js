@@ -6,7 +6,7 @@ client.login('token');
 client.on('ready', () => {
 	console.log('Successfully started!');
 });
-
+// another test
 const game1Lobby = '275059795189563393';
 const game1 = '274976378867154965';
 const staff = '274986888832614401';

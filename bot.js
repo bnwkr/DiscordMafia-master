@@ -121,10 +121,10 @@ client.on('message', message => {
 		if(!message.member.roles.has(staff)) return message.reply("you must be a staff member to use this command.");
 		if(message.mentions.users.size === 0) return message.reply("please mention a user.");
 
-		let killMember = message.guild.member(message.mentions.users.first());
-		if(!killMember) return message.reply("please mention a valid user.");
+		let arrestMember = message.guild.member(message.mentions.users.first());
+		if(!arrestMember) return message.reply("please mention a valid user.");
 
-		killMember.addRole(onTrial).then(member => {
+		arrestMember.addRole(onTrial).then(member => {
 			message.delete();
 			message.channel.sendMessage(`\`${member.user.username}\` ***has been put on trial!***`);
 		});

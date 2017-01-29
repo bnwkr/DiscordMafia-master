@@ -1,6 +1,6 @@
 #Kingpin
 
-##Version 0.3.1 - quite a few things
+##Version 0.5 - ton of things
 
 ###Commands
 
@@ -9,7 +9,11 @@
 * **!leave** - Leaves Game 1 or Game 1 Lobby
 * **!start** - Starts Game 1 (*Staff Only*)
 * **!win [mafia/town] [Game #]** - Finishes the Game (*Staff Only*)
+* **!kill [player]** - Kills Victim of Mafia (*Staff Only*)
+* **!arrest [player]** - Player Goes On Trial (*Staff Only*)
 
+* **!kick [player] [reason]** - Kicks Player (*Staff Only*)
+* **!prune [number <0-100>]** - Prunes Messages (*Staff Only*)
 
 ###Notes/Tips
 

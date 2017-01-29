@@ -181,7 +181,7 @@ client.on('message', message => {
 			});
 		});
 	}
-	
+
 	if(message.content.startsWith("!ban")) {
 		if(!message.member.roles.has(staff)) return message.reply("you must be a staff member to use this command.");
 		if(message.mentions.users.size === 0) return message.reply("please mention a user.");
@@ -200,7 +200,7 @@ client.on('message', message => {
 					url: "http://discord.io/mafia",
 					color: 16711680,
 					fields: [
-						{ name: "User Banned", value: kickMember.toString(), inline: true },
+						{ name: "User Banned", value: banMember.toString(), inline: true },
 						{ name: "Reason", value: reason, inline: true },
 						{ name: "Banned By", value: `${message.author.username}#${message.author.discriminator}`, inline: false }
 					],

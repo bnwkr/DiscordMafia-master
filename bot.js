@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
-client.login('token');
+client.login('Mjc1MDM2OTM1NDM1NzE0NTYw.C27QoQ.p3SvzvjiGvGsUWKSv89oZt0vko8');
 
 client.on('ready', () => {
 	console.log('Successfully started!');

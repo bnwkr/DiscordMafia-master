@@ -126,16 +126,17 @@ client.on('message', message => {
 		let kickMember = message.guild.member(message.mentions.users.first());
 		if(!kickMember) return message.reply("please mention a valid user.");
 		let reason = message.content.split(" ").slice(2).join(" ");
+		if(reason == null) return;
 
 		kickMember.kick().then(member => {
 			message.channel.sendMessage(`:ok_hand: kicked \`${member.user.username}#${member.user.discriminator}\` for \`${reason}\``);
 			message.guild.channels.get(modLogs).sendMessage("", {
 				embed: {
-					title: "**User has been kicked!**",
+					title: "**User Kicked!**",
+					description: "A user has been kicked from the server.",
 					url: "http://discord.io/mafia",
 					color: 16711680,
 					fields: [
-						{ name: '\u200b', value: '\u200b', inline: true },
 						{ name: "User Kicked", value: kickMember.toString(), inline: true },
 						{ name: "Reason", value: reason, inline: true },
 						{ name: "Kicked By", value: `${message.author.username}#${message.author.discriminator}`, inline: false }

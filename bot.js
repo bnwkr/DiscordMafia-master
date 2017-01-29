@@ -130,7 +130,7 @@ client.on('message', message => {
 			const collector = msg.channel.createCollector(
 				m => m.author.id !== client.user.id, { maxMatches: 1, time: 6000 }
 			);
-			collector.on('message', m =>
+			collector.on('message', m => {
 				m.guild.channels.find('name', 'mod-log').sendMessage("", {
 					embed: {
 						title: "User kicked",
@@ -143,7 +143,7 @@ client.on('message', message => {
 						timestamp: new Date()
 					}
 				});
-			);
+			});
 		});
 	}
 

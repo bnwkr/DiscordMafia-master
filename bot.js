@@ -30,10 +30,10 @@ client.on('message', message => {
 	}
 
 	if(message.content === '!start') {
-		if(message.member.roles.has(game1Lobby)) {
-			message.member.removeRole(game1Lobby);
-			message.member.addRole(game1);
-			message.channel.sendMessage("`Game 1` is starting!");
-		}
+		message.guild.roles.get(game1Lobby).members.map(member => {
+	    	member.removeRole(game1Lobby);
+			member.addRole(game1);
+		});
+		message.channel.sendMessage("`Game 1` is starting!");
 	}
 });

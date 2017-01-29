@@ -58,35 +58,7 @@ client.on('message', message => {
 		}
 	}
 
-	if(message.content === '!win Mafia 1') {
-		if(message.member.roles.has(staff)) {
-			message.delete();
-			message.channel.sendMessage("`Mafia` win the game!");
-			client.channels.get('274978970242383872').sendMessage("`Mafia` won in `Game 1`!");
-			message.channel.sendMessage("`Returning back to lobby...`");
-			message.guild.roles.get(game1).members.map(member => {
-						member.removeRole(game1);
-			});
-		} else {
-			message.reply("you must be a staff member to use this command.");
-		}
-	}
-
 	if(message.content === '!win town 1') {
-		if(message.member.roles.has(staff)) {
-			message.delete();
-			message.channel.sendMessage("`Town` win the game!");
-			client.channels.get('274978970242383872').sendMessage("`Town` won in `Game 1`!");
-			message.channel.sendMessage("`Returning back to lobby...`");
-			message.guild.roles.get(game1).members.map(member => {
-						member.removeRole(game1);
-			});
-		} else {
-			message.reply("you must be a staff member to use this command.");
-		}
-	}
-
-	if(message.content === '!win Town 1') {
 		if(message.member.roles.has(staff)) {
 			message.delete();
 			message.channel.sendMessage("`Town` win the game!");
@@ -105,16 +77,6 @@ client.on('message', message => {
 		message.channel.sendMessage("```Usage: !win <mafia/town> <Game #>```");
 	}
 
-	if(message.content === '!win mafia') {
-		message.delete();
-		message.channel.sendMessage("```Usage: !win <mafia/town> <Game #>```");
-	}
-
-	if(message.content === '!win town') {
-		message.delete();
-		message.channel.sendMessage("```Usage: !win <mafia/town> <Game #>```");
-	}
-
 	if(message.content === '!start') {
 		if(message.member.roles.has(staff)) {
 			message.delete();
@@ -128,3 +90,4 @@ client.on('message', message => {
 		}
 		}
 });
+

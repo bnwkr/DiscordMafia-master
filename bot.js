@@ -159,7 +159,7 @@ client.on('message', message => {
 			});
 		});
 	}
-
+ }
 });
 
 process.on("unhandledRejection", err => {

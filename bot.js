@@ -9,10 +9,13 @@ client.on('ready', () => {
 
 const game1Lobby = '275059795189563393';
 const game1 = '274976378867154965';
+const staff = '274986888832614401';
 
 client.on('message', message => {
 	if(message.content === '!create') {
-		message.channel.sendMessage('**Game 1 is starting in** `5` **minutes! Type** `!join` **to enter!**');
+		if(message.member.roles.has(staff)) {
+			message.channel.sendMessage('**Game 1 is starting in** `5` **minutes! Type** `!join` **to enter!**');
+		}
 	}
 
 	if(message.content === '!join') {
@@ -30,10 +33,12 @@ client.on('message', message => {
 	}
 
 	if(message.content === '!start') {
-		message.guild.roles.get(game1Lobby).members.map(member => {
-	    		member.removeRole(game1Lobby);
-			member.addRole(game1);
-		});
-		message.channel.sendMessage("`Game 1` is starting!");
-	}
+		if(message.member.roles.has(staff)) {
+			message.guild.roles.get(game1Lobby).members.map(member => {
+						member.removeRole(game1Lobby);
+				member.addRole(game1);
+			});
+			message.channel.sendMessage("`Game 1` is starting!");
+		}
+		}
 });

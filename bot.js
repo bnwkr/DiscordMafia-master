@@ -66,7 +66,7 @@ client.on('message', message => {
 			client.channels.get('274978970242383872').sendMessage("`Town` won in `Game 1`!");
 			message.channel.sendMessage("`Returning back to lobby...`");
 			message.guild.roles.get(game1).members.map(member => {
-						member.removeRole(game1);
+				member.removeRole(game1);
 			});
 		} else {
 			message.reply("you must be a staff member to use this command.");
@@ -82,12 +82,36 @@ client.on('message', message => {
 		if(message.member.roles.has(staff)) {
 			message.delete();
 			message.guild.roles.get(game1Lobby).members.map(member => {
-						member.removeRole(game1Lobby);
+				member.removeRole(game1Lobby);
 				member.addRole(game1);
 			});
 			message.channel.sendMessage("`Game 1` is starting!");
 		} else {
 			message.reply("you must be a staff member to use this command.");
 		}
+	}
+
+	if (message.content.startsWith("!prune")) {
+		if(message.member.roles.has(staff)) {
+			var user = message.mentions.users.first();
+			let messagecount = parseInt(params[0]);
+
+			message.channel.fetchMessages({limit: 100})
+			.then(messages => {
+				var msg_array = messages.array();
+				if (user !== undefined) {
+					msg_array = msg_array.filter(m => m.author.id === user.id);
+					message.delete();
+				}
+				msg_array.length = messagecount + 1;
+				if (messagecount == 100) msg_array.length = 100;
+
+				message.channel.bulkDelete(msg_array);
+				message.channel.sendMessage(messagecount + "** messages pruned.");
+			})
+			.catch(console.log);
+		} else {
+			message.reply("you must be a staff member to use this command.");
 		}
+    }
 });

@@ -36,3 +36,4 @@ client.on('message', message => {
 			message.channel.sendMessage("`Game 1` is starting!");
 		}
 	}
+});

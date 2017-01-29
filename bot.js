@@ -101,7 +101,7 @@ client.on('message', message => {
 
 			message.channel.fetchMessages({limit: 100})
 			.then(messages => {
-				var msg_array = messages.array();
+				var message_array = messages.array();
 				if (user !== undefined) {
 					msg_array = msg_array.filter(m => m.author.id === user.id);
 					message.delete();
@@ -122,12 +122,12 @@ client.on('message', message => {
 		if(!message.member.roles.has(staff)) return message.reply("you must be a staff member to use this command.");
 		if(message.mentions.users.size === 0) return message.reply("please mention a user.");
 
-		let kickMember = msg.guild.member(msg.mentions.users.first());
+		let kickMember = message.guild.member(message.mentions.users.first());
 		if(!kickMember) return message.reply("please mention a valid user.");
 
 		kickMember.kick().then(member => {
-			message.channel.sendMessage(`:ok_hand: kicked \`${member.user.username}#{member.user.discriminator}\`. Reason for kick?`);
-			const collector = msg.channel.createCollector(
+			message.channel.sendMessage(`:ok_hand: kicked \`${member.user.username}#${member.user.discriminator}\`. Reason for kick?`);
+			const collector = message.channel.createCollector(
 				m => m.author.id !== client.user.id, { maxMatches: 1, time: 6000 }
 			);
 			collector.on('message', m => {

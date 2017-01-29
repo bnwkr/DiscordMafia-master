@@ -7,8 +7,8 @@ client.on('ready', () => {
 	console.log('Successfully started!');
 });
 
-var game1Lobby = '275059795189563393';
-var game1 = '275079458082521088';
+const game1Lobby = '275059795189563393';
+const game1 = '275079458082521088';
 
 client.on('message', message => {
 	if(message.content === '!create') {
@@ -29,10 +29,10 @@ client.on('message', message => {
 		}
 	}
 
-  if(message.content === '!start') {
-    if(message.member.roles.has(game1Lobby)) {
-      message.member.removeRole(game1Lobby);
-      message.member.addRole(game1);
-    }
-  }
+	if(message.content === '!start') {
+		if(message.member.roles.has(game1Lobby)) {
+			message.member.removeRole(game1Lobby);
+			message.member.addRole(game1);
+		}
+	}
 });

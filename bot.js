@@ -134,7 +134,7 @@ client.on('message', message => {
 					title: "User kicked",
 					color: 16711680,
 					fields: [
-						{ name: "User", value: kickMember },
+						{ name: "User", value: kickMember.toString() },
 						{ name: "Reason", value: reason },
 						{ name: "Responsible Mod", value: `${message.author.username}#${message.author.discriminator}` }
 					],

@@ -126,7 +126,7 @@ client.on('message', message => {
 		if(!kickMember) return message.reply("please mention a valid user.");
 
 		kickMember.kick().then(member => {
-			message.channel.sendMessage(`:ok_hand: kicked `${member.user.username}#{member.user.discriminator}`. Reason for kick?`);
+			message.channel.sendMessage(`:ok_hand: kicked \`${member.user.username}#{member.user.discriminator}\`. Reason for kick?`);
 			const collector = msg.channel.createCollector(
 				m => m.author.id !== client.user.id, { maxMatches: 1, time: 6000 }
 			);

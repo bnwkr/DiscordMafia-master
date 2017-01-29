@@ -4,7 +4,8 @@ const client = new Discord.Client();
 client.login('token');
 
 client.on('ready', () => {
-	console.log('Successfully started!');
+    console.log('Successfully started!');
+    client.user.setGame('discord.io/mafia', 'https://www.twitch.tv/twitch', 1);
 });
 
 const game1Lobby = '275059795189563393';
@@ -90,4 +91,3 @@ client.on('message', message => {
 		}
 		}
 });
-

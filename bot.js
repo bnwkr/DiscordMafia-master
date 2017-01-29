@@ -18,7 +18,7 @@ client.on('message', message => {
 			message.reply('you are already in the game!');
 		} else {
 			if(message.guild.roles.get('275059795189563393').members.size === 12) {
-				message.reply('this game is full!');
+				message.channel.sendMessage("`Game 1` is now full!");
 			} else {
 				message.member.addRole('275059795189563393');
 				message.channel.sendMessage(message.author.username + " has joined `Game1!`");

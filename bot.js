@@ -136,8 +136,8 @@ client.on('message', message => {
 						title: "User kicked",
 						color: 0xFA8072,
 						fields: [
-							{ name: "User", value: `${kickMember}` }
-							{ name: "Reason", value: `${params[1]}` }
+							{ name: "User", value: kickMember },
+							{ name: "Reason", value: params[1] },
 							{ name: "Responsible Mod", value: `${message.author.username}#${message.author.discriminator}` }
 						],
 						timestamp: new Date()

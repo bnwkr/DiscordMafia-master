@@ -1,6 +1,6 @@
 #Kingpin
 
-##Version 0.5 - ton of things
+##Version 0.5.2 - fuck ton of things
 
 ###Commands
 
@@ -12,7 +12,7 @@
 * **!kill [player]** - Kills Victim of Mafia (*Staff Only*)
 * **!arrest [player]** - Player Goes On Trial (*Staff Only*)
 
-* **!announce [text]** - Sends message to announcement channel (*Staff Only*)
+* **!announce [text]** - Sends Message to #announcements (*Staff Only*)
 * **!prune [number <0-100>]** - Prunes Messages (*Staff Only*)
 * **!kick [player] [reason]** - Kicks User (*Staff Only*)
 * **!ban [player] [reason]** - Bans User (*Staff Only*)

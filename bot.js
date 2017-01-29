@@ -15,6 +15,8 @@ client.on('message', message => {
 	if(message.content === '!create') {
 		if(message.member.roles.has(staff)) {
 			message.channel.sendMessage('**Game 1 is starting in** `5` **minutes! Type** `!join` **to enter!**');
+		} else {
+			message.reply("you must be a staff member to use this command.");
 		}
 	}
 
@@ -27,7 +29,7 @@ client.on('message', message => {
 				message.channel.sendMessage("`Game 1` is now full!");
 			} else {
 				message.member.addRole(game1Lobby);
-				message.channel.sendMessage(message.author.username + " has joined `Game1!`");
+				message.channel.sendMessage(message.author.username + " has joined `Game 1`!");
 			}
 		}
 	}
@@ -39,6 +41,8 @@ client.on('message', message => {
 				member.addRole(game1);
 			});
 			message.channel.sendMessage("`Game 1` is starting!");
+		} else {
+			message.reply("you must be a staff member to use this command.");
 		}
 		}
 });

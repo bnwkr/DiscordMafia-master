@@ -60,6 +60,18 @@ client.on('message', message => {
 		}
 	}
 
+	if(message.content === '!win') {
+		message.channel.sendMessage("```Usage: !win <mafia/town> <Game #>```");
+	}
+
+	if(message.content === '!win mafia') {
+		message.channel.sendMessage("```Usage: !win <mafia/town> <Game #>```");
+	}
+
+	if(message.content === '!win town') {
+		message.channel.sendMessage("```Usage: !win <mafia/town> <Game #>```");
+	}
+
 	if(message.content === '!start') {
 		if(message.member.roles.has(staff)) {
 			message.guild.roles.get(game1Lobby).members.map(member => {

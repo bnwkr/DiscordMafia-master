@@ -111,7 +111,7 @@ client.on('message', message => {
 				if (messagecount == 100) msg_array.length = 100;
 
 				message.channel.bulkDelete(msg_array);
-				message.channel.sendMessage(messagecount + "** messages pruned.");
+				message.channel.sendMessage(`**${messagecount}** messages pruned.`);
 			})
 			.catch(console.log);
 		} else {
@@ -135,9 +135,9 @@ client.on('message', message => {
 					url: "http://discord.io/mafia",
 					color: 16711680,
 					fields: [
-
-						{ name: "User Kicked", value: kickMember.toString() }, { name: "Reason", value: reason },						
-						{ name: "Kicked By", value: `${message.author.username}#${message.author.discriminator}` }
+						{ name: "User Kicked", value: kickMember.toString(), inline: true },
+						{ name: "Reason", value: reason, inline: true },
+						{ name: "Kicked By", value: `${message.author.username}#${message.author.discriminator}`, inline: true }
 					],
 					timestamp: new Date()
 				}

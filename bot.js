@@ -5,7 +5,7 @@ client.login('Mjc1MDM2OTM1NDM1NzE0NTYw.C27QoQ.p3SvzvjiGvGsUWKSv89oZt0vko8');
 
 client.on('ready', () => {
 	console.log('Successfully started!');
-	client.user.setGame('discord.me/playmafia', 'https://www.twitch.tv/twitch', 1);
+	client.user.setGame('discord.io/mafia', 'https://twitch.tv/twitch', 1);
 });
 
 const announcements = '275253102100217857';

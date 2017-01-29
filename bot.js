@@ -8,7 +8,7 @@ client.on('ready', () => {
 });
 
 var game1Lobby = '275059795189563393';
-var game1 = '275078289108762624';
+var game1 = '275079458082521088';
 
 client.on('message', message => {
 	if(message.content === '!create') {

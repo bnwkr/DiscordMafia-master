@@ -114,6 +114,7 @@ client.on('message', message => {
 		killMember.addRole(deadRole).then(member => {
 			message.delete();
 			member.removeRole(game1);
+			member.removeRole(onTrial);
 			message.channel.sendMessage(`\`${member.user.username}\` ***has been killed!***`);
 		});
 	}

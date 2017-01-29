@@ -146,6 +146,5 @@ client.on('message', message => {
 			});
 		});
 	}
-	// test
 
 });

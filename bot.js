@@ -8,10 +8,11 @@ client.on('ready', () => {
 	client.user.setGame('discord.io/mafia', 'https://www.twitch.tv/twitch', 1);
 });
 
+const announcements = '275253102100217857';
+const modLogs = '274996413593681921';
+const staff = '274986888832614401';
 const game1Lobby = '275059795189563393';
 const game1 = '274976378867154965';
-const staff = '274986888832614401';
-const modLogs = '274996413593681921';
 const deadRole = '274986487232069634';
 const onTrial = '275025618117197834';
 
@@ -130,28 +131,31 @@ client.on('message', message => {
 		});
 	}
 
+	if(message.content.startsWith("!announce")) {
+		if(!message.member.roles.has(staff)) return message.reply("you must be a staff member to use this command.");
+		let say = message.content.split(" ").slice(1).join(" ");
+		message.guild.channels.get(announcements).sendMessage(say);
+	}
+
 	if(message.content.startsWith("!prune")) {
-		if(message.member.roles.has(staff)) {
-			var user = message.mentions.users.first();
-			let messagecount = parseInt(params[0]);
+		if(!message.member.roles.has(staff)) return message.reply("you must be a staff member to use this command.");
+		var user = message.mentions.users.first();
+		let messagecount = parseInt(params[0]);
 
-			message.channel.fetchMessages({limit: 100})
-			.then(messages => {
-				var msg_array = messages.array();
-				if (user !== undefined) {
-					msg_array = msg_array.filter(m => m.author.id === user.id);
-					message.delete();
-				}
-				msg_array.length = messagecount + 1;
-				if (messagecount == 100) msg_array.length = 100;
+		message.channel.fetchMessages({limit: 100})
+		.then(messages => {
+			var msg_array = messages.array();
+			if (user !== undefined) {
+				msg_array = msg_array.filter(m => m.author.id === user.id);
+				message.delete();
+			}
+			msg_array.length = messagecount + 1;
+			if (messagecount == 100) msg_array.length = 100;
 
-				message.channel.bulkDelete(msg_array);
-				message.channel.sendMessage(`**${messagecount}** messages pruned.`);
-			})
-			.catch(console.log);
-		} else {
-			message.reply("you must be a staff member to use this command.");
-		}
+			message.channel.bulkDelete(msg_array);
+			message.channel.sendMessage(`**${messagecount}** messages pruned.`);
+		})
+		.catch(console.log);
 	}
 
 	if(message.content.startsWith("!kick")) {

@@ -17,8 +17,16 @@ const deadRole = '274986487232069634';
 const onTrial = '275025618117197834';
 
 client.on('message', message => {
-
 	const params = message.content.split(" ").slice(1);
+
+	if(message.content === "!ping") {
+		message.delete();
+		let startTime = Date.now();
+		message.channel.sendMessage("Pinging...").then(newMessage => {
+			let endTime = Date.now();
+			newMessage.edit("Pong! `" + Math.round(endTime - startTime) + "ms`");
+		});
+	}
 
 	if(message.content === '!create') {
 		if(message.member.roles.has(staff)) {
@@ -133,6 +141,7 @@ client.on('message', message => {
 	}
 
 	if(message.content.startsWith("!announce")) {
+		message.delete();
 		if(!message.member.roles.has(staff)) return message.reply("you must be a staff member to use this command.");
 		let say = message.content.split(" ").slice(1).join(" ");
 		message.guild.channels.get(announcements).sendMessage(say);

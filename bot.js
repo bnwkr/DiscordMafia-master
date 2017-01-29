@@ -15,7 +15,7 @@ client.on('message', message => {
 
 client.on('message', message => {
   if(message.content === '!join'){
-    #WE CAN'T GET THIS RIGHT ARGHHHH
+    //WE CAN'T GET THIS RIGHT ARGHHHH//
     message.channel.sendMessage(message.author.username + 'has joined Game1!');
   }
 });

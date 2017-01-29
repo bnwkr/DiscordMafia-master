@@ -131,12 +131,12 @@ client.on('message', message => {
 			message.channel.sendMessage(`:ok_hand: kicked \`${member.user.username}#${member.user.discriminator}\` for \`${reason}\``);
 			message.guild.channels.get(modLogs).sendMessage("", {
 				embed: {
-					title: "User has been kicked!",
+					title: "**User has been kicked!**",
 					url: "http://discord.io/mafia",
 					color: 16711680,
 					fields: [
-						{ name: "User Kicked", value: kickMember.toString() },
-						{ name: "Reason", value: reason },
+
+						{ name: "User Kicked", value: kickMember.toString() }, { name: "Reason", value: reason },						
 						{ name: "Kicked By", value: `${message.author.username}#${message.author.discriminator}` }
 					],
 					timestamp: new Date()

@@ -11,6 +11,7 @@ client.on('ready', () => {
 const game1Lobby = '275059795189563393';
 const game1 = '274976378867154965';
 const staff = '274986888832614401';
+const modLogs = '274996413593681921';
 
 client.on('message', message => {
 

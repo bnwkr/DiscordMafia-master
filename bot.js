@@ -4,8 +4,8 @@ const client = new Discord.Client();
 client.login('token');
 
 client.on('ready', () => {
-    console.log('Successfully started!');
-    client.user.setGame('discord.io/mafia', 'https://www.twitch.tv/twitch', 1);
+	console.log('Successfully started!');
+	client.user.setGame('discord.io/mafia', 'https://www.twitch.tv/twitch', 1);
 });
 
 const game1Lobby = '275059795189563393';
@@ -13,7 +13,7 @@ const game1 = '274976378867154965';
 const staff = '274986888832614401';
 
 client.on('message', message => {
-	
+
 	const params = message.content.split(" ").slice(1);
 
 	if(message.content === '!create') {
@@ -94,7 +94,7 @@ client.on('message', message => {
 		}
 	}
 
-	if (message.content.startsWith("!prune")) {
+	if(message.content.startsWith("!prune")) {
 		if(message.member.roles.has(staff)) {
 			var user = message.mentions.users.first();
 			let messagecount = parseInt(params[0]);
@@ -116,5 +116,35 @@ client.on('message', message => {
 		} else {
 			message.reply("you must be a staff member to use this command.");
 		}
-    }
+	}
+
+	if(message.content.startsWith("!kick")) {
+		if(!message.member.roles.has(staff)) return message.reply("you must be a staff member to use this command.");
+		if(message.mentions.users.size === 0) return message.reply("please mention a user.");
+
+		let kickMember = msg.guild.member(msg.mentions.users.first());
+		if(!kickMember) return message.reply("please mention a valid user.");
+
+		kickMember.kick().then(member => {
+			message.channel.sendMessage(`:ok_hand: kicked `${member.user.username}#{member.user.discriminator}`. Reason for kick?`);
+			const collector = msg.channel.createCollector(
+				m => m.author.id !== client.user.id, { maxMatches: 1, time: 6000 }
+			);
+			collector.on('message', m =>
+				m.guild.channels.find('name', 'mod-log').sendMessage("", {
+					embed: {
+						title: "User kicked",
+						color: 0xFA8072,
+						fields: [
+							{ name: "User", value: `${kickMember}` }
+							{ name: "Reason", value: `${params[1]}` }
+							{ name: "Responsible Mod", value: `${message.author.username}#${message.author.discriminator}` }
+						],
+						timestamp: new Date()
+					}
+				});
+			);
+		});
+	}
+
 });

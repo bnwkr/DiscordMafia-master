@@ -12,6 +12,8 @@
 * **!kill [player]** - Kills Victim of Mafia (*Staff Only*)
 * **!arrest [player]** - Player Goes On Trial (*Staff Only*)
 
+&nbsp;
+
 * **!announce [text]** - Sends Message to #announcements (*Staff Only*)
 * **!prune [number <0-100>]** - Prunes Messages (*Staff Only*)
 * **!kick [player] [reason]** - Kicks User (*Staff Only*)

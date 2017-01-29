@@ -12,6 +12,7 @@ const game1Lobby = '275059795189563393';
 const game1 = '274976378867154965';
 const staff = '274986888832614401';
 const modLogs = '274996413593681921';
+const deadRole = '274986487232069634';
 
 client.on('message', message => {
 
@@ -58,6 +59,9 @@ client.on('message', message => {
 			message.guild.roles.get(game1).members.map(member => {
 						member.removeRole(game1);
 			});
+			message.guild.roles.get(deadRole).members.map(member => {
+						member.removeRole(deadRole);
+			});
 		} else {
 			message.reply("you must be a staff member to use this command.");
 		}
@@ -71,6 +75,9 @@ client.on('message', message => {
 			message.channel.sendMessage("`Returning back to lobby...`");
 			message.guild.roles.get(game1).members.map(member => {
 				member.removeRole(game1);
+			});
+			message.guild.roles.get(deadRole).members.map(member => {
+						member.removeRole(deadRole);
 			});
 		} else {
 			message.reply("you must be a staff member to use this command.");
@@ -104,7 +111,7 @@ client.on('message', message => {
 
 		killMember.addRole('274986487232069634').then(member => {
 			message.delete();
-			member.removeRole(game1);					
+			member.removeRole(game1);
 			message.channel.sendMessage(`\`${member.user.username}\` ***has been killed in the night!***`);
 		});
 	}
@@ -160,7 +167,6 @@ client.on('message', message => {
 			});
 		});
 	}
- }
 });
 
 process.on("unhandledRejection", err => {

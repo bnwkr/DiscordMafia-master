@@ -127,7 +127,7 @@ client.on('message', message => {
 		if(!kickMember) return message.reply("please mention a valid user.");
 
 		kickMember.kick().then(member => {
-			message.channel.sendMessage(`:ok_hand: kicked \`${member.user.username}#${member.user.discriminator}\`. Reason for kick?`);
+			message.channel.sendMessage(`:ok_hand: kicked \`${member.user.username}#${member.user.discriminator}\` for \`${params[1]}\``);
 			message.guild.channels.get(modLogs).sendMessage("", {
 				embed: {
 					title: "User kicked",

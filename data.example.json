@@ -2,7 +2,7 @@
 	"games": [
 		{
 			"game": "1",
-			"players": ["BlueDeadpool", "Tiemen", "Zach", "Bob", "Jon"], // probably use user IDs everywhere
+			"players": ["BlueDeadpool", "Tiemen", "Zach", "Bob", "Jon", "should use IDs instead of names"],
 			"mafia": ["Tiemen"],
 			"dead": ["Zach"],
 			"ontrial": ["Tiemen"],
@@ -21,7 +21,7 @@
 					"id": "123456789101112131415"
 				}
 			],
-			"status": "day2" // day1, night1, day2, night2, pregame, win-mafia, win-town, ended
+			"status": "day1,day2,night2,night3,pregame,win-mafia,win-town,ended"
 		}
 	]
 }

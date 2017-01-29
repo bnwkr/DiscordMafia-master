@@ -102,8 +102,9 @@ client.on('message', message => {
 			let killMember = message.guild.member(message.mentions.users.first());
 			if(!killMember) return message.reply("please mention a valid user.");
 
-			killMember.addRole(274986487232069634).then(member => {
-					member.removeRole(game1);
+			killMember.addRole('274986487232069634').then(member => {
+					message.delete();
+					member.removeRole(game1);					
 					message.channel.sendMessage("\`${member.user.username}\` ***has been killed in the night!***");
 		 });
 

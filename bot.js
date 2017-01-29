@@ -131,7 +131,7 @@ client.on('message', message => {
 			message.guild.channels.get(modLogs).sendMessage("", {
 				embed: {
 					title: "User kicked",
-					color: 0xFA8072,
+					color: 16711680,
 					fields: [
 						{ name: "User", value: kickMember },
 						{ name: "Reason", value: params[1] },

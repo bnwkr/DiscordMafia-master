@@ -13,6 +13,7 @@ const game1 = '274976378867154965';
 const staff = '274986888832614401';
 const modLogs = '274996413593681921';
 const deadRole = '274986487232069634';
+const onTrial = '275025618117197834';
 
 client.on('message', message => {
 
@@ -109,10 +110,23 @@ client.on('message', message => {
 		let killMember = message.guild.member(message.mentions.users.first());
 		if(!killMember) return message.reply("please mention a valid user.");
 
-		killMember.addRole('274986487232069634').then(member => {
+		killMember.addRole(deadRole).then(member => {
 			message.delete();
 			member.removeRole(game1);
-			message.channel.sendMessage(`\`${member.user.username}\` ***has been killed in the night!***`);
+			message.channel.sendMessage(`\`${member.user.username}\` ***has been killed!***`);
+		});
+	}
+
+	if(message.content.startsWith("!arrest")) {
+		if(!message.member.roles.has(staff)) return message.reply("you must be a staff member to use this command.");
+		if(message.mentions.users.size === 0) return message.reply("please mention a user.");
+
+		let killMember = message.guild.member(message.mentions.users.first());
+		if(!killMember) return message.reply("please mention a valid user.");
+
+		killMember.addRole(onTrial).then(member => {
+			message.delete();
+			message.channel.sendMessage(`\`${member.user.username}\` ***has been put on trial!***`);
 		});
 	}
 

@@ -31,7 +31,7 @@ client.on('message', message => {
 
 	if(message.content === '!start') {
 		message.guild.roles.get(game1Lobby).members.map(member => {
-	    	member.removeRole(game1Lobby);
+	    		member.removeRole(game1Lobby);
 			member.addRole(game1);
 		});
 		message.channel.sendMessage("`Game 1` is starting!");

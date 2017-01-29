@@ -31,6 +31,7 @@ client.on('message', message => {
 
   if(message.content === '!start') {
     if(message.member.roles.has(game1Lobby)) {
+      message.member.removeRole(game1Lobby);
       message.member.addRole(game1);
     }
   }

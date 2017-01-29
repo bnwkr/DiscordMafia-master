@@ -96,18 +96,18 @@ client.on('message', message => {
 	}
 
 	if(message.content.startsWith("!kill")) {
-			if(!message.member.roles.has(staff)) return message.reply("you must be a staff member to use this command.");
-			if(message.mentions.users.size === 0) return message.reply("please mention a user.");
+		if(!message.member.roles.has(staff)) return message.reply("you must be a staff member to use this command.");
+		if(message.mentions.users.size === 0) return message.reply("please mention a user.");
 
-			let killMember = message.guild.member(message.mentions.users.first());
-			if(!killMember) return message.reply("please mention a valid user.");
+		let killMember = message.guild.member(message.mentions.users.first());
+		if(!killMember) return message.reply("please mention a valid user.");
 
-			killMember.addRole('274986487232069634').then(member => {
-					message.delete();
-					member.removeRole(game1);					
-					message.channel.sendMessage("\`${member.user.username}\` ***has been killed in the night!***");
-		 });
-
+		killMember.addRole('274986487232069634').then(member => {
+			message.delete();
+			member.removeRole(game1);					
+			message.channel.sendMessage(`\`${member.user.username}\` ***has been killed in the night!***`);
+		});
+	}
 
 	if(message.content.startsWith("!prune")) {
 		if(message.member.roles.has(staff)) {

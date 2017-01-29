@@ -7,7 +7,7 @@
 * **!create** - Creates Game 1 (*Staff Only*)
 * **!join** - Joins Game 1 Lobby
 * **!start** - Starts Game 1 (*Staff Only*)
-* **!win <mafia/town> <gamenumber>** - Finishes the Game (*Staff Only*)
+* **!win [Mafia/Town] [Game #]** - Finishes the Game (*Staff Only*)
 
 ###Notes/Tips
 

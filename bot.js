@@ -34,6 +34,30 @@ client.on('message', message => {
 		}
 	}
 
+	if(message.content === '!win mafia') {
+		if(message.member.roles.has(staff)) {
+			message.channel.sendMessage("`Mafia` win the game!");
+			message.channel.sendMessage("`Returning back to lobby...`");
+			message.guild.roles.get(game1).members.map(member => {
+						member.removeRole(game1);
+			});
+		} else {
+			message.reply("you must be a staff member to use this command.");
+		}
+	}
+
+	if(message.content === '!win town') {
+		if(message.member.roles.has(staff)) {
+			message.channel.sendMessage("`Town` win the game!");
+			message.channel.sendMessage("`Returning back to lobby...`");
+			message.guild.roles.get(game1).members.map(member => {
+						member.removeRole(game1);
+			});
+		} else {
+			message.reply("you must be a staff member to use this command.");
+		}
+	}
+
 	if(message.content === '!start') {
 		if(message.member.roles.has(staff)) {
 			message.guild.roles.get(game1Lobby).members.map(member => {

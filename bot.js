@@ -8,7 +8,7 @@ client.on('ready', () => {
 });
 
 const game1Lobby = '275059795189563393';
-const game1 = '275079458082521088';
+const game1 = '274976378867154965';
 
 client.on('message', message => {
 	if(message.content === '!create') {
@@ -33,6 +33,6 @@ client.on('message', message => {
 		if(message.member.roles.has(game1Lobby)) {
 			message.member.removeRole(game1Lobby);
 			message.member.addRole(game1);
+			message.channel.sendMessage("`Game 1` is starting!");
 		}
 	}
-});

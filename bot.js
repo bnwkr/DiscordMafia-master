@@ -181,6 +181,34 @@ client.on('message', message => {
 			});
 		});
 	}
+	
+	if(message.content.startsWith("!ban")) {
+		if(!message.member.roles.has(staff)) return message.reply("you must be a staff member to use this command.");
+		if(message.mentions.users.size === 0) return message.reply("please mention a user.");
+
+		let banMember = message.guild.member(message.mentions.users.first());
+		if(!banMember) return message.reply("please mention a valid user.");
+		let reason = message.content.split(" ").slice(2).join(" ");
+		if(reason == null) return;
+
+		banMember.ban(1).then(member => {
+			message.channel.sendMessage(`:ok_hand: banned \`${member.user.username}#${member.user.discriminator}\` for \`${reason}\``);
+			message.guild.channels.get(modLogs).sendMessage("", {
+				embed: {
+					title: "**User Banned!**",
+					description: "A user has been banned from the server.",
+					url: "http://discord.io/mafia",
+					color: 16711680,
+					fields: [
+						{ name: "User Banned", value: kickMember.toString(), inline: true },
+						{ name: "Reason", value: reason, inline: true },
+						{ name: "Banned By", value: `${message.author.username}#${message.author.discriminator}`, inline: false }
+					],
+					timestamp: new Date()
+				}
+			});
+		});
+	}
 });
 
 process.on("unhandledRejection", err => {

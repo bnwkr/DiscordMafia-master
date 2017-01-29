@@ -34,9 +34,10 @@ client.on('message', message => {
 		}
 	}
 
-	if(message.content === '!win mafia') {
+	if(message.content === '!win mafia 1') {
 		if(message.member.roles.has(staff)) {
 			message.channel.sendMessage("`Mafia` win the game!");
+			client.channels.get('274978970242383872').sendMessage("`Mafia` won in `Game 1`!")
 			message.channel.sendMessage("`Returning back to lobby...`");
 			message.guild.roles.get(game1).members.map(member => {
 						member.removeRole(game1);
@@ -46,9 +47,10 @@ client.on('message', message => {
 		}
 	}
 
-	if(message.content === '!win town') {
+	if(message.content === '!win town 1') {
 		if(message.member.roles.has(staff)) {
 			message.channel.sendMessage("`Town` win the game!");
+			client.channels.get('274978970242383872').sendMessage("`Town` won in `Game 1`!")
 			message.channel.sendMessage("`Returning back to lobby...`");
 			message.guild.roles.get(game1).members.map(member => {
 						member.removeRole(game1);

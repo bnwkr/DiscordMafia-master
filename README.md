@@ -19,8 +19,5 @@
 * **!kick [player] [reason]** - Kicks User (*Staff Only*)
 * **!ban [player] [reason]** - Bans User (*Staff Only*)
 
-###Notes/Tips
-
-NOTE: When downloading, replace 'token'.
-
-NOTE: 'npm install discord.js' when downloading for the first time.
+####Developed by BlueDeadpool and Tiemen for http://discord.io/mafia
+####Password: Kingpin

@@ -21,7 +21,7 @@
 					"id": "123456789101112131415"
 				}
 			],
-			"status": "day1,day2,night2,night3,pregame,win-mafia,win-town,ended"
+			"status": "pregame,ingame-day1,ingame-day2,ingame-night2,ingame-night3,ended-forced,ended-win-mafia,ended-win-town"
 		}
 	]
 }

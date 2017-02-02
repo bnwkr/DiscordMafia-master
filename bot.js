@@ -9,18 +9,19 @@ client.on('ready', () => {
 	client.user.setGame('discord.io/mafia', 'https://twitch.tv/twitch', 1);
 });
 
-const announcements = '275253102100217857';
-const modLogs = '274996413593681921';
-const staff = '274986888832614401';
-const game1Lobby = '275059795189563393';
-const game1 = '274976378867154965';
-const deadRole = '274986487232069634';
-const onTrial = '275025618117197834';
+const announcements = '275253102100217857'; // announcements channel
+const modLogs = '274996413593681921'; // mod logs channel
+const staff = '274986888832614401'; // staff role
+const game1Lobby = '275059795189563393'; // game1-lobby role
+const game1 = '274976378867154965'; // game1 role
+const deadRole = '274986487232069634'; // dead role
+const onTrial = '275025618117197834'; // onTrial role
 
 client.on('message', message => {
 	const params = message.content.split(" ").slice(1);
 
 	if(message.content === "!ping") {
+		if(!message.member.roles.has(staff)) return message.reply("you must be a staff member to use this command.");
 		message.delete();
 		let startTime = Date.now();
 		message.channel.sendMessage("Pinging...").then(newMessage => {
@@ -30,27 +31,21 @@ client.on('message', message => {
 	}
 
 	if(message.content === '!create') {
-		if(message.member.roles.has(staff)) {
-			message.delete();
-			message.channel.sendMessage('**Game 1 is starting in** `5` **minutes! Type** `!join` **to enter!**');
-		} else {
-			message.reply("you must be a staff member to use this command.");
-		}
+		if(!message.member.roles.has(staff)) return message.reply("you must be a staff member to use this command.");
+		message.delete();
+		message.channel.sendMessage('**Game 1 is starting in** `5` **minutes! Type** `!join` **to enter!**');
 	}
 
 	if(message.content === '!join') {
-		if(message.member.roles.has(game1Lobby)) {
-			message.delete();
-			message.reply('you are already in the game!');
+		if(message.member.roles.has(gameLobby)) return message.reply("you are already in the game!");
+		
+		if(message.guild.roles.get(game1Lobby).members.size === 12) {
+			message.channel.sendMessage("`Game 1` is now full!");
+			client.channels.get('275022062459027457').sendMessage("`Game 1` is now full!");
 		} else {
-			if(message.guild.roles.get(game1Lobby).members.size === 12) {
-				message.channel.sendMessage("`Game 1` is now full!");
-				client.channels.get('275022062459027457').sendMessage("`Game 1` is now full!");
-			} else {
-				message.member.addRole(game1Lobby);
-				message.channel.sendMessage(message.author.username + " has joined `Game 1`!");
-				client.channels.get('275022062459027457').sendMessage(message.author.username + " has joined `Game 1`!");
-			}
+			message.member.addRole(game1Lobby);
+			message.channel.sendMessage(message.author.username + " has joined `Game 1`!");
+			client.channels.get('275022062459027457').sendMessage(message.author.username + " has joined `Game 1`!");
 		}
 	}
 
@@ -61,56 +56,14 @@ client.on('message', message => {
 		message.channel.sendMessage(message.author.username + " has left `Game 1`!");
 	}
 
-	if(message.content === '!win mafia 1') {
-		if(message.member.roles.has(staff)) {
-			message.delete();
-			message.channel.sendMessage("`Mafia` win the game!");
-			client.channels.get('274978970242383872').sendMessage("`Mafia` won in `Game 1`!");
-			message.channel.sendMessage("`Returning back to lobby...`");
-			message.guild.roles.get(game1).members.map(member => {
-						member.removeRole(game1);
-			});
-			message.guild.roles.get(deadRole).members.map(member => {
-						member.removeRole(deadRole);
-			});
-		} else {
-			message.reply("you must be a staff member to use this command.");
-		}
-	}
-
-	if(message.content === '!win town 1') {
-		if(message.member.roles.has(staff)) {
-			message.delete();
-			message.channel.sendMessage("`Town` win the game!");
-			client.channels.get('274978970242383872').sendMessage("`Town` won in `Game 1`!");
-			message.channel.sendMessage("`Returning back to lobby...`");
-			message.guild.roles.get(game1).members.map(member => {
-				member.removeRole(game1);
-			});
-			message.guild.roles.get(deadRole).members.map(member => {
-						member.removeRole(deadRole);
-			});
-		} else {
-			message.reply("you must be a staff member to use this command.");
-		}
-	}
-
-	if(message.content === '!win') {
-		message.delete();
-		message.channel.sendMessage("```Usage: !win <mafia/town> <Game #>```");
-	}
-
 	if(message.content === '!start') {
-		if(message.member.roles.has(staff)) {
-			message.delete();
-			message.guild.roles.get(game1Lobby).members.map(member => {
-				member.removeRole(game1Lobby);
-				member.addRole(game1);
-			});
-			message.channel.sendMessage("`Game 1` is starting!");
-		} else {
-			message.reply("you must be a staff member to use this command.");
-		}
+		if(!message.member.roles.has(staff)) return message.reply("you must be a staff member to use this command.");
+		message.delete();
+		message.guild.roles.get(game1Lobby).members.map(member => {
+			member.removeRole(game1Lobby);
+			member.addRole(game1);
+		});
+		message.channel.sendMessage("`Game 1` is starting!");
 	}
 
 	if(message.content.startsWith("!kill")) {
@@ -141,6 +94,39 @@ client.on('message', message => {
 		});
 	}
 
+	if(message.content === '!win') {
+		message.delete();
+		message.channel.sendMessage("```Usage: !win <mafia/town> <Game #>```");
+	}
+
+	if(message.content === '!win mafia 1') {
+		if(!message.member.roles.has(staff)) return message.reply("you must be a staff member to use this command.");
+		message.delete();
+		message.channel.sendMessage("`Mafia` win the game!");
+		client.channels.get('274978970242383872').sendMessage("`Mafia` won in `Game 1`!");
+		message.channel.sendMessage("`Returning back to lobby...`");
+		message.guild.roles.get(game1).members.map(member => {
+					member.removeRole(game1);
+		});
+		message.guild.roles.get(deadRole).members.map(member => {
+					member.removeRole(deadRole);
+		});
+	}
+
+	if(message.content === '!win town 1') {
+		if(!message.member.roles.has(staff)) return message.reply("you must be a staff member to use this command.");
+		message.delete();
+		message.channel.sendMessage("`Town` win the game!");
+		client.channels.get('274978970242383872').sendMessage("`Town` won in `Game 1`!");
+		message.channel.sendMessage("`Returning back to lobby...`");
+		message.guild.roles.get(game1).members.map(member => {
+			member.removeRole(game1);
+		});
+		message.guild.roles.get(deadRole).members.map(member => {
+					member.removeRole(deadRole);
+		});
+	}
+
 	if(message.content.startsWith("!announce")) {
 		message.delete();
 		if(!message.member.roles.has(staff)) return message.reply("you must be a staff member to use this command.");
@@ -156,12 +142,12 @@ client.on('message', message => {
 		message.channel.fetchMessages({limit: 100})
 		.then(messages => {
 			var msg_array = messages.array();
-			if (user !== undefined) {
+			if(user !== undefined) {
 				msg_array = msg_array.filter(m => m.author.id === user.id);
 				message.delete();
 			}
 			msg_array.length = messagecount + 1;
-			if (messagecount == 100) msg_array.length = 100;
+			if(messagecount == 100) msg_array.length = 100;
 
 			message.channel.bulkDelete(msg_array);
 			message.channel.sendMessage(`**${messagecount}** messages pruned.`);

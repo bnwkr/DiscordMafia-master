@@ -1,0 +1,20 @@
+{
+	"name": "kingpin",
+	"version": "0.5.2",
+	"description": "Private Discord.js bot for the Mafia Discord",
+	"readme": "README.md",
+	"main": "bot.js",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/BlueDeadpool/Kingpin.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"discord.js": "^11.0.0"
+	},
+	"bugs": {
+		"url": "https://github.com/BlueDeadpool/Kingpin/issues"
+	},
+	"homepage": "https://github.com/BlueDeadpool/Kingpin#readme"
+}

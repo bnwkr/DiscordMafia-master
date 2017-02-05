@@ -20,6 +20,6 @@
 * **!prune [number <0-100>]** - Prunes Messages (*Staff Only*)
 * **!kick [player] [reason]** - Kicks User (*Staff Only*)
 * **!ban [player] [reason]** - Bans User (*Staff Only*)
-
+ 
 ####Developed by BlueDeadpool and Tiemen for http://discord.io/mafia
 ####Password: Kingpin

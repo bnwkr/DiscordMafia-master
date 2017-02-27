@@ -2,20 +2,19 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const fs = require('fs');
 
-client.login('Mjc1MDM2OTM1NDM1NzE0NTYw.C27QoQ.p3SvzvjiGvGsUWKSv89oZt0vko8');
+client.login('Enter Bot Token');
 
 client.on('ready', () => {
 	console.log('Successfully started!');
-	client.user.setGame('discord.io/mafia', 'https://twitch.tv/twitch', 1);
 });
 
-const announcements = '275253102100217857'; // announcements channel
-const modLogs = '274996413593681921'; // mod logs channel
-const staff = '274986888832614401'; // staff role
-const game1Lobby = '275059795189563393'; // game1-lobby role
-const game1 = '274976378867154965'; // game1 role
-const deadRole = '274986487232069634'; // dead role
-const onTrial = '275025618117197834'; // onTrial role
+const announcements = ''; // announcements channel
+const modLogs = ''; // mod logs channel
+const staff = ''; // staff role
+const game1Lobby = ''; // game1-lobby role
+const game1 = ''; // game1 role
+const deadRole = ''; // dead role
+const onTrial = ''; // onTrial role
 
 client.on('message', message => {
 	const params = message.content.split(" ").slice(1);

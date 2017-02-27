@@ -1,6 +1,8 @@
 #Kingpin
 
-##Version 0.5.2 - fuck ton of things
+##Version 0.5.2
+
+##WARNING: DO NOT USE IF YOU HAVE NO EXPERIENCE WITH DEVELOPMENT, IN ORDER TO GET THE EXPERIENCE YOU MUST KNOW HOW TO ADD ROOM IDS TO THE SCRIPT.
 
 ###Commands
 
@@ -21,5 +23,4 @@
 * **!kick [player] [reason]** - Kicks User (*Staff Only*)
 * **!ban [player] [reason]** - Bans User (*Staff Only*)
  
-####Developed by BlueDeadpool and Tiemen for http://discord.io/mafia
-####Password: Kingpin
+####Developed by BlueDeadpool and Tiemen
